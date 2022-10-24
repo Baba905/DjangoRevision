@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% block cotent %}
+<br>
+{% include 'accounts/status.html'%}
+<hr>
+<div class="row">
+
+    <div class="col-md-3">
+        <h4> Customer</h4>
+        <hr>
+
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-dark">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="#" role="button">Create Customer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <h4>Last order</h4>
+        <hr>
+        <div class="card border-primary mb-3" style="max-width: 75rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-dark">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Date Ordered</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="#" role="button">Create Order</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}
