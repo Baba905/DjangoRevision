@@ -39,7 +39,10 @@ class Order(models.Model):
         ('Out of delivery', 'Out of delivery'),
         ('Delivered', 'Delivered'),
     )
-    customer = models.ForeignKey(Customer, on_delete= models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, on_delete= models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete= models.CASCADE, null=True,  related_name="orders")
+    product = models.ForeignKey(Product, on_delete= models.CASCADE, null=True)
     date_created = models.DateTimeField(auto_now_add= True, null= True)
     status = models.CharField(max_length=255,null =True, choices=STATUS)
+
+    def __str__(self) -> str:
+        return self.product.name

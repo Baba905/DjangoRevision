@@ -1,0 +1,50 @@
+version: '3'
+
+networks:
+  mynetwork:
+    external: false
+    driver: bridge
+    ipam:
+      config:
+        - subnet : 172.16.57.0/24
+
+services:
+  web:
+    build : .
+    container_name: customer_container
+    volumes:
+      - static:/customer/staticfiles
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  db:
+    image: "postgres:latest"
+    container_name: customer_db
+    environment:
+      POSTGRES_PASSWORD: mypassword
+    networks:
+      - mynetwork
+    volumes:
+      - pgdb:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: customer_nginx
+    volumes:
+      - static:/home/app/web/staticfiles
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    networks:
+      - mynetwork
+    ports:
+      - "80:80"
+
+volumes:
+  pgdb:
+    driver: local
+  static:
+
+   

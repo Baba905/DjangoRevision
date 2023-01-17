@@ -9,7 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'category', 'date_created']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['status', 'date_created']
+    list_display = ['customer','product','status', 'date_created']
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
